@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noe & Mati. Nos Casamos.</title>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/fullpage.js/jquery.fullPage.css">
+  <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <div id="loading"><i>Loading&#8230;</i></div>
+
+  <main id="main" role="main">
+    <section class="section">
+      <article>
+        <h1><img src="assets/images/noe-mati.png" alt="Noe Y Mati" /></h1>
+        <h2><img src="assets/images/olivia.png" alt="Olivia" /></h2>
+        <div id="date"><img src="assets/images/date.png" alt="12-06-2015" /></div>
+        <h6><img src="assets/images/footer.png" alt="footer" /></h6>
+      </article>
+    </section>
+    <section class="section">
+      <h1>RSVP</h1>
+      <iframe id="ifrm" name="ifrm" class="hidden"></iframe>
+      <form action="https://docs.google.com/forms/d/19zTwNgsFrpyNIVr9g9tvPwCeZWM1C-I6upKI5yNIUX0/formResponse" method="POST" id="ss-form" target="ifrm" onsubmit="return App.validateRsvp();" class="container-fluid">
+        <fieldset class="row" rel="info-personal">
+          <legend class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">Informaci&eacute;n personal</legend>
+
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+          </div>
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label>Contamos con tu asistencia?</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="asistencia" id="asistencia-si" value="si"> Si
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="asistencia" id="asistencia-no" value="no"> No
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="asistencia" id="asistencia-confirmar" value="confirmar"> A Confirmar
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="row" rel="mas-info">
+          <legend class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">Mas Informaci&oacute;n</legend>
+
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label for="acompanado">Llegas acompa&ntilde;ado</label>
+            <textarea class="form-control" name="acompanado" id="acompanado" rows="5"></textarea>
+          </div>
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label>Llegas del exterior?</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="exterior" id="exterior-si" value="si"> Si
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="exterior" id="exterior-no" value="no"> No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="row" rel="info-extranjeros">
+          <legend class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">Informaci&eacute;n Sobre Extranjeros</legend>
+
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label>Primera vez en Israel?</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="primeravez" id="primeravez-si" value="si"> Si
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="primeravez" id="primeravez-no" value="no"> No
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label for="vuelo">Numero de vuelo</label>
+            <input type="text" class="form-control" id="vuelo" name="vuelo">
+          </div>
+          <div class="form-group col-xs-12 col-sm-10 col-md-4 col-lg-3 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label for="fecha-entrada">Fecha de llegada</label>
+            <div class="input-group date" id="fecha-entrada-picker">
+              <input type="text" class="form-control" name="fecha-entrada" id="fecha-entrada">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 col-sm-10 col-md-4 col-lg-3 col-sm-offset-1 col-md-offset-0 col-lg-offset-0">
+            <label for="fecha-salida">Fecha de salida</label>
+            <div class="input-group date" id="fecha-salida-picker">
+              <input type="text" class="form-control" name="fecha-salida" id="fecha-salida">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label>Alojamiento?</label>
+            <p class="help-block">Necesitas donde alojarte durante tu estad&iacute;a?</p>
+            <div class="radio">
+              <label>
+                <input type="radio" name="alojamiento" id="alojamiento-si" value="si"> Si
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="alojamiento" id="alojamiento-no" value="no"> No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="row" rel="comida">
+          <legend class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">Comida</legend>
+
+          <div class="form-group col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+            <label>Comida especial?</label>
+            <p class="help-block">Se pueden seleccionar varias opciones</p>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="comida" id="comida-chicos" value="Menu chicos"> Menu chicos
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="comida" id="comida-vegetariano" value="Vegetariano"> Vegetariano
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="comida" id="comida-vegano" value="Vegano"> Vegano
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="comida" id="comida-kasher" value="Kasher"> Kasher
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <!-- ployfills -->
+  <script type="text/javascript" src="bower_components/transitionEnd/src/transition-end.min.js"></script>
+
+  <!-- libraries -->
+  <script src="https://code.createjs.com/preloadjs-0.6.0.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/fullpage.js/vendors/jquery.slimscroll.min.js"></script>
+  <script src="bower_components/fullpage.js/jquery.fullPage.min.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6Vp26LTqJzfZtSf2bUK3vk5Q3Njr5uA"></script> -->
+
+  <!-- application -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
