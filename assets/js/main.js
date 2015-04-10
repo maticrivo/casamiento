@@ -4,7 +4,7 @@
     $('#main').fullpage({
       easingcss3: 'ease',
       autoScrolling: true,
-      // scrollBar: true,
+      normalScrollElements: '#rsvp',
       controlArrows: false,
       navigation: true,
       navigationPosition: 'right',
