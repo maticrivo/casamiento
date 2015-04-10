@@ -6,9 +6,6 @@
       autoScrolling: true,
       normalScrollElements: '#rsvp',
       controlArrows: false,
-      navigation: true,
-      navigationPosition: 'right',
-      navigationTooltips: ['', 'rsvp'],
       scrollOverflow: true,
       fitToSection: true
     });
@@ -25,17 +22,6 @@
     var preload = new createjs.LoadQueue();
     preload.addEventListener('fileload', handleFileComplete);
     preload.loadFile('assets/images/bg.jpg');
-
-    $('#fecha-entrada-picker, #fecha-salida-picker').datetimepicker({
-      format: 'D/M H:mm',
-      sideBySide: true
-    });
-    $("#fecha-entrada-picker").on("dp.change", function (e) {
-      $('#fecha-salida-picker').data("DateTimePicker").minDate(e.date);
-    });
-    $("#fecha-salida-picker").on("dp.change", function (e) {
-      $('#fecha-entrada-picker').data("DateTimePicker").maxDate(e.date);
-    });
   }
 
   Casamiento.prototype = {
