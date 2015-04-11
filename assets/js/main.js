@@ -7,13 +7,14 @@
       normalScrollElements: '#rsvp',
       controlArrows: false,
       scrollOverflow: true,
-      fitToSection: true
+      fitToSection: true,
+      responsive: 900
     });
 
     loading = document.getElementById('loading');
     loading.className = 'loaded';
+    document.getElementById('main').className = 'loaded';
     transitionEnd(loading).bind(function() {
-      $('#main').addClass('loaded');
       loading.parentNode.removeChild(loading);
     });
   }
@@ -22,13 +23,20 @@
     var preload = new createjs.LoadQueue();
     preload.addEventListener('fileload', handleFileComplete);
     preload.loadFile('assets/images/bg.jpg');
+
+    document.getElementById("ifrm").setAttribute("onload", "if(Casamiento.rsvp) {Casamiento.rsvpSent();}");
   }
 
   Casamiento.prototype = {
     rsvp: false,
 
-    validate_rsvp: function validate_rsvp() {
-      return false;
+    validateRsvp: function validateRsvp() {
+      self.rsvp = true;
+      return true;
+    },
+
+    rsvpSent: function rsvpSent() {
+
     }
   };
 
