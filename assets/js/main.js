@@ -2,13 +2,8 @@
 
   function handleFileComplete(event) {
     $('#main').fullpage({
-      easingcss3: 'ease',
-      autoScrolling: true,
-      normalScrollElements: '#rsvp',
-      controlArrows: false,
-      scrollOverflow: true,
-      fitToSection: true,
-      responsive: 900
+      autoScrolling: false,
+      fitToSection: false
     });
 
     loading = document.getElementById('loading');
