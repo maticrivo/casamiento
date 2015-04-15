@@ -46,6 +46,10 @@ a:hover {
   color: #323232;
   font-weight: 400;
 }
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
 
 header img {
   width: 100%;
