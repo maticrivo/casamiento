@@ -1,29 +1,31 @@
 !(function(scope) {
 
-  function handleFileComplete(event) {
-    $('#main').fullpage({
-      autoScrolling: false,
-      fitToSection: false
-    });
-
-    loading = document.getElementById('loading');
-    loading.className = 'loaded';
-    $('#main').addClass('loaded');
-    transitionEnd(loading).bind(function() {
-      loading.parentNode.removeChild(loading);
-    });
-  }
-
   function Casamiento() {
     var preload = new createjs.LoadQueue();
-    preload.addEventListener('fileload', handleFileComplete);
+    preload.addEventListener('fileload', this.handleFileComplete.bind(this));
     preload.loadFile('assets/images/bg.jpg');
 
     document.getElementById("ifrm").setAttribute("onload", "if(Casamiento.rsvp) {Casamiento.rsvpSent();}");
   }
 
   Casamiento.prototype = {
+    self: this,
     rsvp: false,
+
+    handleFileComplete: function handleFileComplete(event) {
+      $('#main').fullpage({
+        autoScrolling: false,
+        fitToSection: false,
+        afterRender: this.loadMap.bind(this)
+      });
+
+      loading = document.getElementById('loading');
+      loading.className = 'loaded';
+      $('#main').addClass('loaded');
+      transitionEnd(loading).bind(function() {
+        loading.parentNode.removeChild(loading);
+      });
+    },
 
     validateRsvp: function validateRsvp() {
       self.rsvp = true;
@@ -32,81 +34,22 @@
 
     rsvpSent: function rsvpSent() {
 
+    },
+
+    loadMap: function loadMap() {
+      $('#map article').height('80%');
+      $('#map-container').height('100%');
+      var mapOptions = {
+        center: {
+          lat: 32.218068,
+          lng: 34.937992
+        },
+        zoom: 16,
+        scrollwheel: false,
+      };
+      var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
     }
   };
-
-  /*function initialize() {
-    var mapOptions = {
-      center: {
-        lat: 32.2198,
-        lng: 34.936
-      },
-      zoom: 15,
-      styles: [{
-        "featureType": "administrative",
-        "elementType": "all",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "lightness": 33
-        }]
-      }, {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [{
-          "color": "#f2e5d4"
-        }]
-      }, {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#c5dac6"
-        }]
-      }, {
-        "featureType": "poi.park",
-        "elementType": "labels",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "lightness": 20
-        }]
-      }, {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [{
-          "lightness": 20
-        }]
-      }, {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#c5c6c6"
-        }]
-      }, {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#e4d7c6"
-        }]
-      }, {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [{
-          "color": "#fbfaf7"
-        }]
-      }, {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [{
-          "visibility": "on"
-        }, {
-          "color": "#acbcc9"
-        }]
-      }]
-    };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);*/
 
   scope['Casamiento'] = new Casamiento();
 })(window)
