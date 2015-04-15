@@ -33,7 +33,16 @@
     },
 
     rsvpSent: function rsvpSent() {
+      rsvp = document.getElementById('rsvp');
+      transitionEnd(rsvp).bind(function() {
+        $('#rsvp').addClass('hidden');
+        $('#rsvp-sent').removeClass('hidden');
+        $.fn.fullpage.reBuild();
+        $('#rsvp-sent h1').addClass('sent');
 
+        $('#rsvp').remove();
+      });
+      $('#rsvp').addClass('sent');
     },
 
     loadMap: function loadMap() {

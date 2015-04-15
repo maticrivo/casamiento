@@ -237,6 +237,16 @@ header h3 img {
 #main.loaded {
   opacity: 1;
 }
+
+#rsvp,
+#rsvp-sent h1.sent {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+#rsvp.sent,
+#rsvp-sent h1 {
+  opacity: 0;
+}
 /* Smartphones (portrait) ----------- */
 /*@media only screen and (max-width : 320px) {
   html {
