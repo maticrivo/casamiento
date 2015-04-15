@@ -8,7 +8,7 @@
 
     loading = document.getElementById('loading');
     loading.className = 'loaded';
-    document.getElementById('main').className = 'loaded';
+    $('#main').addClass('loaded');
     transitionEnd(loading).bind(function() {
       loading.parentNode.removeChild(loading);
     });

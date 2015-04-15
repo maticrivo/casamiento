@@ -12,17 +12,25 @@
 <body>
   <div id="loading"><i>Loading&#8230;</i></div>
 
-  <main id="main" role="main">
-    <header class="section">
-      <h1><img src="assets/images/noe-mati.png" alt="Noe Y Mati" /></h1>
-      <h2><img src="assets/images/olivia.png" alt="Olivia" /></h2>
-      <div id="date"><img src="assets/images/date.png" alt="12-06-2015" /></div>
-      <h6><img src="assets/images/footer.png" alt="footer" /></h6>
+  <main id="main" role="main" class="container">
+    <header class="row section">
+      <h1 class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+        <img src="assets/images/noe-mati.png" alt="Noe Y Mati" />
+      </h1>
+      <h2 class="col-sm-12 col-md-10 col-lg-6 col-md-offset-1 col-lg-offset-3">
+        <img src="assets/images/olivia.png" alt="Olivia" />
+      </h2>
+      <h3 class="col-sm-12 col-md-10 col-lg-4 col-md-offset-1 col-lg-offset-4">
+        <img src="assets/images/date.png" alt="12-06-2015" />
+      </h3>
+      <h4 class="col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+        <img src="assets/images/footer.png" alt="footer" />
+      </h4>
     </header>
     <section id="rsvp" class="section">
       <h1>RSVP</h1>
       <iframe id="ifrm" name="ifrm" class="hidden"></iframe>
-      <form action="https://docs.google.com/forms/d/19zTwNgsFrpyNIVr9g9tvPwCeZWM1C-I6upKI5yNIUX0/formResponse" method="POST" id="ss-form" target="ifrm" onsubmit="return App.validateRsvp();" class="container-fluid">
+      <form action="https://docs.google.com/forms/d/19zTwNgsFrpyNIVr9g9tvPwCeZWM1C-I6upKI5yNIUX0/formResponse" method="POST" id="ss-form" target="ifrm" onsubmit="return App.validateRsvp();">
         <fieldset class="row" rel="info-personal">
           <legend class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">Informaci&eacute;n personal</legend>
 

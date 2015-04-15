@@ -38,19 +38,6 @@ body {
   background-color: inherit;
   text-align: center;
 }
-
-h1 img {
-  width: 80%;
-  height: auto;
-}
-h2 img {
-  width: 40%;
-  height: auto;
-}
-#date img {
-  width: 25%;
-  height: auto;
-}
 a {
   color: #7b7b7b;
   text-decoration: none;
@@ -59,9 +46,19 @@ a:hover {
   color: #323232;
   font-weight: 400;
 }
-h6 img {
-  width: 50%;
+
+header img {
+  width: 100%;
   height: auto;
+}
+header h1,
+header h2,
+header h3 {
+  margin-bottom: 35px;
+}
+header h2 img,
+header h3 img {
+  width: 80%;
 }
 
 #fp-nav ul li .fp-tooltip {
