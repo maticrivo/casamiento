@@ -90,8 +90,51 @@ img {
 header h2 {
   margin-bottom: 30px;
 }
+
+ul {
+  list-style-type: none;
+  position: relative;
+  margin: 0;
+  padding: 20px 0;
+  text-align: left;
+  display: inline-block;
 }
+ul::before {
+  content: '';
+  background-color: #485563;
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  left: 80px;
+  border-radius: 50%;
 }
+li {
+  margin-top: 50px;
+  position: relative;
+}
+li::before {
+  position: absolute;
+  left: 82px;
+  top: 50%;
+  margin: -5px 0 0 -5px;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #4e5d6c;
+  border-radius: 50%;
+  border: 2px solid #485563;
+}
+li time {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+li div {
+  position: relative;
+  margin: 0 0 0 130px;
+  top: 0;
+}
+
 
 #fp-nav ul li .fp-tooltip {
   background-color: #000;
