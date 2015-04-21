@@ -72,6 +72,16 @@ a:hover {
   direction: rtl;
   text-align: right;
 }
+h1,
+label,
+.checkbox label,
+.radio label {
+  font-weight: 300;
+}
+fieldset {
+  border: none;
+  text-align: left;
+}
 
 img {
   width: 100%;
@@ -322,8 +332,3 @@ header h2 {
     background: black;
   }
 }*/
-
-fieldset {
-  border: none;
-  text-align: left;
-}
