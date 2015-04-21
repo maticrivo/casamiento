@@ -46,7 +46,7 @@
     },
 
     loadMap: function loadMap() {
-      $('#map article').height('80%');
+      $('#map article').height('75%');
       $('#map-container').height('100%');
       var mapOptions = {
         center: {

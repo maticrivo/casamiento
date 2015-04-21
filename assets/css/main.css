@@ -108,6 +108,14 @@ header h2 {
   opacity: 0.6;
 }
 
+#map .container {
+  height: 75%;
+}
+#map .row,
+#map-container {
+  height: 100%;
+}
+
 /* loading heart */
 @-moz-keyframes loading {
   0% {
