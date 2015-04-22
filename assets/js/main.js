@@ -55,6 +55,7 @@
         },
         zoom: 16,
         scrollwheel: false,
+        draggable: false
       };
       var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
     }
