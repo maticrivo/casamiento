@@ -6,11 +6,18 @@
     preload.loadFile('assets/images/bg.jpg');
 
     document.getElementById("ifrm").setAttribute("onload", "if(Casamiento.rsvp) {Casamiento.rsvpSent();}");
+
+    document.getElementById("map-container").addEventListener("touchstart", this.touchStart.bind(this), true);
+    document.getElementById("map-container").addEventListener("touchend", this.touchEnd.bind(this), true);
+    document.getElementById("map-container").addEventListener("touchmove", this.touchMove.bind(this), true);
   }
 
   Casamiento.prototype = {
     self: this,
     rsvp: false,
+    dragFlag: false,
+    start: 0,
+    end: 0,
 
     handleFileComplete: function handleFileComplete(event) {
       $('#main').fullpage({
@@ -57,7 +64,23 @@
         scrollwheel: false,
         draggable: false
       };
+
       var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
+    },
+
+    touchStart: function touchStart(e) {
+      this.dragFlag = true;
+      this.start = e.touches[0].pageY;
+    },
+
+    touchEnd: function touchEnd() {
+      this.dragFlag = false;
+    },
+
+    touchMove: function touchMove(e) {
+        if ( !this.dragFlag ) return;
+        this.end = e.touches[0].pageY;
+        window.scrollBy( 0,( this.start - this.end ) );
     }
   };
 
