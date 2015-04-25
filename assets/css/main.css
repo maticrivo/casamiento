@@ -111,11 +111,23 @@ li time {
 }
 
 #map .container {
+  height: 100%;
+}
+#map .row.map,
+#map-container {
   height: 75%;
 }
-#map .row,
-#map-container {
-  height: 100%;
+#map .well {
+  background: url(../images/white-bg.png) repeat;
+  border-radius: 0;
+  box-shadow: none;
+  border-width: 1px 0;
+  border-color: #6c6c6c;
+  text-align: center;
+}
+#map .well h4 {
+  text-align: center;
+  font-weight: 300;
 }
 
 /* loading heart */
