@@ -287,6 +287,18 @@ li time {
 #rsvp-sent h1 {
   opacity: 0;
 }
+
+.form-group {
+  margin-bottom: 30px;
+}
+label,
+.help-block {
+  margin-bottom: 0;
+}
+.checkbox,
+.radio {
+  margin-top: 0;
+}
 /* Smartphones (portrait) ----------- */
 /*@media only screen and (max-width : 320px) {
   html {

@@ -10,6 +10,8 @@
     document.getElementById("map-container").addEventListener("touchstart", this.touchStart.bind(this), true);
     document.getElementById("map-container").addEventListener("touchend", this.touchEnd.bind(this), true);
     document.getElementById("map-container").addEventListener("touchmove", this.touchMove.bind(this), true);
+
+    $('input[name="entry.1490252627"]').change(this.handleAbroadRsvp);
   }
 
   Casamiento.prototype = {
@@ -33,6 +35,15 @@
       transitionEnd(loading).bind(function() {
         loading.parentNode.removeChild(loading);
       });
+    },
+
+    handleAbroadRsvp: function handleAbroadRsvp() {
+      if (this.value.toLowerCase() == 'si') {
+        $('fieldset[rel="info-extranjeros"]').removeClass('hidden');
+      } else {
+        $('fieldset[rel="info-extranjeros"]').addClass('hidden');
+      }
+      $.fn.fullpage.reBuild();
     },
 
     validateRsvp: function validateRsvp() {
