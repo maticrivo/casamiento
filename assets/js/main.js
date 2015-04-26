@@ -5,7 +5,7 @@
     preload.addEventListener('fileload', this.handleFileComplete.bind(this));
     preload.loadFile('assets/images/bg.jpg');
 
-    document.getElementById("ifrm").setAttribute("onload", "if(Casamiento.rsvp) {Casamiento.rsvpSent();}");
+    document.getElementById("ifrm").setAttribute("onload", "Casamiento.rsvpSent()");
 
     document.getElementById("map-container").addEventListener("touchstart", this.touchStart.bind(this), true);
     document.getElementById("map-container").addEventListener("touchend", this.touchEnd.bind(this), true);
@@ -15,7 +15,6 @@
   }
 
   Casamiento.prototype = {
-    self: this,
     rsvp: false,
     dragFlag: false,
     start: 0,
@@ -47,21 +46,23 @@
     },
 
     validateRsvp: function validateRsvp() {
-      self.rsvp = true;
+      this.rsvp = true;
       return true;
     },
 
     rsvpSent: function rsvpSent() {
-      rsvp = document.getElementById('rsvp');
-      transitionEnd(rsvp).bind(function() {
-        $('#rsvp').addClass('hidden');
-        $('#rsvp-sent').removeClass('hidden');
-        $.fn.fullpage.reBuild();
-        $('#rsvp-sent h1').addClass('sent');
+      if (this.rsvp) {
+        rsvp = document.getElementById('rsvp');
+        transitionEnd(rsvp).bind(function() {
+          $('#rsvp').addClass('hidden');
+          $('#rsvp-sent').removeClass('hidden');
+          $.fn.fullpage.reBuild();
+          $('#rsvp-sent h1').addClass('sent');
 
-        $('#rsvp').remove();
-      });
-      $('#rsvp').addClass('sent');
+          $('#rsvp').remove();
+        });
+        $('#rsvp').addClass('sent');
+      }
     },
 
     loadMap: function loadMap() {
