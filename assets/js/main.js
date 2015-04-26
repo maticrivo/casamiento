@@ -18,6 +18,7 @@
     dragFlag: false,
     start: 0,
     end: 0,
+    venue: new google.maps.LatLng(32.218068, 34.937992),
 
     handleFileComplete: function handleFileComplete(event) {
       $('#main').fullpage({
@@ -56,16 +57,30 @@
       $('#map article').height('75%');
       $('#map-container').height('100%');
       var mapOptions = {
-        center: {
-          lat: 32.218068,
-          lng: 34.937992
-        },
+        center: this.venue,
         zoom: 16,
         scrollwheel: false,
-        draggable: false
+        draggable: false,
+        disableDefaultUI: true
       };
 
       var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
+
+      var marker = new google.maps.Marker({
+        title: 'Moadon Hakshatot / מועדון הקשתות',
+        position: this.venue,
+        map: map,
+        icon: '/assets/images/heart-2.png'
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+        content: '<h1>Boda Noe & Mati</h1>'
+      });
+
+      // Opens the InfoWindow when marker is clicked.
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
     },
 
     touchStart: function touchStart(e) {
