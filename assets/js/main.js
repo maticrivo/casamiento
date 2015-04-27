@@ -78,12 +78,14 @@
     loadMap: function loadMap() {
       $('#map article').height('75%');
       $('#map-container').height('100%');
+
       var mapOptions = {
         center: this.venue,
-        zoom: 16,
+        zoom: 15,
         scrollwheel: false,
         draggable: false,
-        disableDefaultUI: true
+        disableDefaultUI: true,
+        styles: [{"featureType":"all","elementType":"labels","stylers":[{"gamma":0.26},{"visibility":"on"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"on"},{"lightness":-50}]},{"featureType":"administrative.province","elementType":"labels.text","stylers":[{"lightness":20}]},{"featureType":"administrative.province","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"hue":"#ff0000"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"saturation":"-80"},{"visibility":"on"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"saturation":"-54"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"lightness":50},{"hue":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"lightness":20}]}]
       };
 
       var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
@@ -115,9 +117,9 @@
     },
 
     touchMove: function touchMove(e) {
-        if ( !this.dragFlag ) return;
-        this.end = e.touches[0].pageY;
-        window.scrollBy( 0,( this.start - this.end ) );
+      if (!this.dragFlag) return;
+      this.end = e.touches[0].pageY;
+      window.scrollBy(0, (this.start - this.end));
     }
   };
 
