@@ -11,7 +11,8 @@
     document.getElementById("map-container").addEventListener("touchend", this.touchEnd.bind(this), true);
     document.getElementById("map-container").addEventListener("touchmove", this.touchMove.bind(this), true);
 
-    $('input[name="entry.1490252627"]').change(this.handleAbroadRsvp);
+    $('input[name="entry.1490252627"]').change(this.handleAbroadRsvp.bind(this));
+    $(window).resize(this.handleResize.bind(this));
   }
 
   Casamiento.prototype = {
@@ -22,11 +23,14 @@
     venue: new google.maps.LatLng(32.218068, 34.937992),
 
     handleFileComplete: function handleFileComplete(event) {
-      $('#main').fullpage({
-        autoScrolling: false,
-        fitToSection: false,
-        afterRender: this.loadMap.bind(this)
-      });
+      // $('#main').fullpage({
+      //   autoScrolling: false,
+      //   fitToSection: false,
+      //   responsive: 640,
+      //   afterRender: this.loadMap.bind(this)
+      // });
+      this.handleResize();
+      this.loadMap();
 
       loading = document.getElementById('loading');
       loading.className = 'loaded';
@@ -36,13 +40,17 @@
       });
     },
 
-    handleAbroadRsvp: function handleAbroadRsvp() {
-      if (this.value.toLowerCase() == 'si') {
+    handleResize: function handleResize() {
+      $('.section, .cell').height($(window).height());
+    },
+
+    handleAbroadRsvp: function handleAbroadRsvp(element) {
+      if (element.target.value.toLowerCase() == 'si') {
         $('fieldset[rel="info-extranjeros"]').removeClass('hidden');
       } else {
         $('fieldset[rel="info-extranjeros"]').addClass('hidden');
       }
-      $.fn.fullpage.reBuild();
+      this.handleResize();
     },
 
     validateRsvp: function validateRsvp() {
@@ -52,15 +60,17 @@
 
     rsvpSent: function rsvpSent() {
       if (this.rsvp) {
-        rsvp = document.getElementById('rsvp');
-        transitionEnd(rsvp).bind(function() {
+        var rsvp = document.getElementById('rsvp');
+
+        transitionEnd(rsvp).bind((function() {
           $('#rsvp').addClass('hidden');
           $('#rsvp-sent').removeClass('hidden');
-          $.fn.fullpage.reBuild();
           $('#rsvp-sent h1').addClass('sent');
 
           $('#rsvp').remove();
-        });
+
+          this.handleResize();
+        }).bind(this));
         $('#rsvp').addClass('sent');
       }
     },
