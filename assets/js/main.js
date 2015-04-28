@@ -12,7 +12,6 @@
     document.getElementById("map-container").addEventListener("touchmove", this.touchMove.bind(this), true);
 
     $('input[name="entry.1490252627"]').change(this.handleAbroadRsvp.bind(this));
-    $(window).resize(this.handleResize.bind(this));
   }
 
   Casamiento.prototype = {
@@ -79,12 +78,14 @@
       $('#map article').height('75%');
       $('#map-container').height('100%');
 
+      var mobile = jQuery(window).width() <= 640;
+
       var mapOptions = {
         center: this.venue,
-        zoom: 15,
+        zoom: 12,
         scrollwheel: false,
-        draggable: false,
-        disableDefaultUI: true,
+        draggable: !mobile,
+        disableDefaultUI: mobile,
         styles: [{"featureType":"all","elementType":"labels","stylers":[{"gamma":0.26},{"visibility":"on"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"on"},{"lightness":-50}]},{"featureType":"administrative.province","elementType":"labels.text","stylers":[{"lightness":20}]},{"featureType":"administrative.province","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"hue":"#ff0000"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"saturation":"-80"},{"visibility":"on"}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"saturation":"-54"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"lightness":50},{"hue":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"lightness":20}]}]
       };
 
