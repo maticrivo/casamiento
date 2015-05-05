@@ -11,10 +11,12 @@
     document.getElementById("map-container").addEventListener("touchend", this.touchEnd.bind(this), true);
     document.getElementById("map-container").addEventListener("touchmove", this.touchMove.bind(this), true);
 
+    $('input[name="entry.1148051801"]').change(this.handleRsvp.bind(this));
     $('input[name="entry.1490252627"]').change(this.handleAbroadRsvp.bind(this));
   }
 
   Casamiento.prototype = {
+    coming: false,
     rsvp: false,
     dragFlag: false,
     start: 0,
@@ -43,6 +45,17 @@
       $('.section, .cell').height($(window).height());
     },
 
+    handleRsvp: function handleARsvp(element) {
+      if (element.target.value.toLowerCase() == 'no') {
+        $('fieldset[rel="mas-info"], fieldset[rel="comida"]').addClass('hidden');
+        this.coming = false;
+      } else {
+        $('fieldset[rel="mas-info"], fieldset[rel="comida"]').removeClass('hidden');
+        this.coming = true;
+      }
+      this.handleResize();
+    },
+
     handleAbroadRsvp: function handleAbroadRsvp(element) {
       if (element.target.value.toLowerCase() == 'si') {
         $('fieldset[rel="info-extranjeros"]').removeClass('hidden');
@@ -60,6 +73,10 @@
     rsvpSent: function rsvpSent() {
       if (this.rsvp) {
         var rsvp = document.getElementById('rsvp');
+
+        if (!this.coming) {
+          $('#rsvp-sent h1').html('Lamentamos mucho que no puedas venir / <span class="rtl">מצטערים שלא תוכל להגיע</span>');
+        }
 
         transitionEnd(rsvp).bind((function() {
           $('#rsvp').addClass('hidden');
